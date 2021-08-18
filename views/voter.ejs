@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Voter Side</title>
+    </head>
+    <body>
+        <main>
+            <div style="font-size:small">
+                <a href="<%=baseURL%>/">Back to home page</a>   
+                
+            </div>
+        
+            <!-- <div><%= msgCode %> </div> -->
+            <% if (msgCode == "VOTED") { %>
+            <div style="color:green">Voted successfully/already</div>
+            <% } else { %>
+                <div>Student ID</div>
+                <form action="voter/castVote" method="post">
+                    <input type="text" id="studentID" name="studentID">
+                    <table>
+                        <% for(var i = 0; i < candidates.length; i++) { %>
+                        <tr>
+                            <td>
+                                <input
+                                    type="radio"
+                                    name="voteRadio"
+                                    value="<%= candidates[i].candidateID %>"
+                                />
+                            </td>
+                            </td>
+                            <td><%= candidates[i].candidateID %></td>
+                            <td><%= candidates[i].candidateName %></td>
+                        </tr>
+                        <%}%>
+                    </table>    
+                    <input type="submit" value="Cast Vote">
+    
+                </form>
+                <% } %>
+
+
+            
+
+
+
+        </main>
+    </body>
+</html>
